@@ -5,8 +5,35 @@ Class {
 		'done',
 		'title'
 	],
+	#classInstVars : [
+		'uniqueInstance',
+		'instances'
+	],
 	#category : #'TODO-Domain'
 }
+
+{ #category : #'class initialization' }
+TODOTask class >> add: anInstance [
+
+	instances add: anInstance
+]
+
+{ #category : #'class initialization' }
+TODOTask class >> initialize [ 
+	
+	self reset
+]
+
+{ #category : #'class initialization' }
+TODOTask class >> instances [ 
+
+	^ instances
+]
+
+{ #category : #'class initialization' }
+TODOTask class >> reset [
+	instances := OrderedCollection new
+]
 
 { #category : #accessing }
 TODOTask >> done: aBoolean [
@@ -23,6 +50,12 @@ TODOTask >> initialize [
 { #category : #testing }
 TODOTask >> isDone [
 	^ done
+]
+
+{ #category : #saving }
+TODOTask >> save [ 	
+
+	self class add: self 
 ]
 
 { #category : #accessing }

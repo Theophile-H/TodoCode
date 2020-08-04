@@ -7,14 +7,6 @@ Class {
 	#category : #'TODO-Application'
 }
 
-{ #category : #specs }
-TODOListPresenter class >> defaultSpec [
-
-	^ SpBoxLayout newVertical
-		add: #todoListPresenter;
-		yourself
-]
-
 { #category : #initialization }
 TODOListPresenter >> addTask [
 
@@ -94,5 +86,5 @@ TODOListPresenter >> todoListContextMenu [
 { #category : #initialization }
 TODOListPresenter >> updatePresenter [
 
-	todoListPresenter items: TODOTask selectAll asOrderedCollection
+	todoListPresenter items: TODOTask instances 
 ]
