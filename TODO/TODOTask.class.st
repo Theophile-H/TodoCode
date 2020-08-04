@@ -14,8 +14,8 @@ Class {
 
 { #category : #'class initialization' }
 TODOTask class >> add: anInstance [
-
-	instances add: anInstance
+	(instances includes: anInstance)
+		ifFalse: [instances add: anInstance]
 ]
 
 { #category : #'class initialization' }
@@ -28,6 +28,12 @@ TODOTask class >> initialize [
 TODOTask class >> instances [ 
 
 	^ instances
+]
+
+{ #category : #'class initialization' }
+TODOTask class >> remove: anInstance [
+
+	instances remove: anInstance
 ]
 
 { #category : #'class initialization' }
@@ -50,6 +56,20 @@ TODOTask >> initialize [
 { #category : #testing }
 TODOTask >> isDone [
 	^ done
+]
+
+{ #category : #accessing }
+TODOTask >> printOn: aStream [
+
+	title
+		ifNotNil:[ :t | aStream nextPutAll: t]
+		ifNil: [ aStream nextPutAll: 'Todo' ]
+]
+
+{ #category : #saving }
+TODOTask >> remove [ 	
+
+	self class remove: self 
 ]
 
 { #category : #saving }

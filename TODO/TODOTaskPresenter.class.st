@@ -3,8 +3,7 @@ Class {
 	#superclass : #SpPresenter,
 	#instVars : [
 		'task',
-		'titlePresenter',
-		'aTask'
+		'titlePresenter'
 	],
 	#category : #'TODO-Application'
 }
@@ -14,7 +13,7 @@ TODOTaskPresenter >> accept [
 
 	self task 
 		title: titlePresenter text;
-		save.
+		save
 ]
 
 { #category : #accessing }
@@ -47,11 +46,13 @@ TODOTaskPresenter >> task [
 
 { #category : #accessing }
 TODOTaskPresenter >> task: aTask [
+
 	task := aTask.
 	self updatePresenter
 ]
 
 { #category : #accessing }
 TODOTaskPresenter >> updatePresenter [
-	titlePresenter text: (aTask title ifNil: [ '' ])
+
+	titlePresenter text: (task title ifNil: [ '' ])
 ]
